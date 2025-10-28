@@ -8,8 +8,21 @@
 </head>
 <body>
   <header>
-    <h1>Viola Ngige</h1>
-    <p>Cybersecurity & Cloud Enthusiast | Aspiring Analyst</p>
+    <div class="header-content">
+      <h1>Viola Ngige</h1>
+      <p>Cybersecurity & Cloud Enthusiast | Aspiring Analyst</p>
+    </div>
+
+    <!-- Simple responsive nav -->
+    <nav>
+      <div class="menu-toggle">☰</div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
   <section id="about">
@@ -28,22 +41,28 @@
     </ul>
   </section>
 
- <section id="projects">
-  <h2>Projects</h2>
+  <section id="projects">
+    <h2>Projects</h2>
 
-  <div class="project">
-    <h3>Notes Manager (Python Project)</h3>
-    <p>A command-line notes management tool built in Python that allows users to create, edit, delete, and view notes — stored efficiently in a text or JSON file. It’s a lightweight productivity app designed to help organize thoughts from the terminal.</p>
-    <a href="https://github.com/Violangige02/note_manager" target="_blank" class="btn">View on GitHub</a>
-  </div>
+    <div class="project">
+      <h3>📝 Notes Manager (Python Project)</h3>
+      <p>A command-line notes management tool built in Python that allows users to create, edit, delete, and view notes — stored efficiently in a text or JSON file.</p>
+      <a href="https://github.com/Violangige02/note_manager" target="_blank" class="btn">View on GitHub</a>
+    </div>
 
-  <div class="project">
-    <h3>Python Automation Script</h3>
-    <p>A simple Python script that automates daily tasks such as collecting data from websites or cleaning files.</p>
-  </div>
+    <div class="project">
+      <h3>⚙️ File Organizer Automation Script</h3>
+      <p>A Python automation tool that scans a folder and organizes files into categorized folders (like Images, Documents, Scripts, etc.) — making file management simple and fast.</p>
+      <p><strong>Tech Stack:</strong> Python (os, shutil)</p>
+      <a href="https://github.com/Violangige02/file_organizer" target="_blank" class="btn">View on GitHub</a>
+    </div>
 
-</section>
-
+    <div class="project">
+      <h3>💻 E-Commerce Database System (MariaDB Project)</h3>
+      <p>A relational database project designed to simulate an e-commerce platform with tables for customers, products, orders, order items, and payments — including foreign keys, views, stored procedures, and triggers.</p>
+      <a href="https://github.com/Violangige02/E-COMMERCE-SYSTEM" target="_blank" class="btn">View on GitHub</a>
+    </div>
+  </section>
 
   <section id="contact">
     <h2>Contact</h2>
@@ -52,9 +71,12 @@
     <p>GitHub: <a href="https://github.com/Violangige02" target="_blank">github.com/Violangige02</a></p>
   </section>
 
-   <footer>
+  <footer>
     <p>© 2025 Viola Ngige | Built with ❤️ and ambition</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
 

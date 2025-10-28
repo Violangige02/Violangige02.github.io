@@ -1,51 +1,86 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  background-color: #f7f9fc;
-  color: #333;
+/* Project Section */
+#projects {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
-header {
-  background-color: #0d1117;
-  color: #fff;
-  text-align: center;
-  padding: 50px 20px;
-}
-
-h1 {
-  font-size: 2.5em;
-}
-
-section {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  background: white;
+.project {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
-li {
-  background: #eef2f7;
-  margin: 5px 0;
-  padding: 8px;
-  border-radius: 6px;
+.project h3 {
+  color: #0d1117;
+  margin-bottom: 10px;
 }
 
-a {
-  color: #0078ff;
-  text-decoration: none;
+.project p {
+  margin-bottom: 15px;
+  line-height: 1.6;
 }
 
-footer {
-  text-align: center;
-  background-color: #0d1117;
+.btn {
+  display: inline-block;
+  background-color: #0078ff;
   color: #fff;
-  padding: 10px;
-  margin-top: 40px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
 }
+
+.btn:hover {
+  background-color: #005fcc;
+}
+/* 🌐 Responsive Design */
+@media (max-width: 768px) {
+  header {
+    padding: 30px 15px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  section {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  #projects {
+    gap: 15px;
+  }
+
+  .project {
+    padding: 15px;
+  }
+
+  .btn {
+    padding: 6px 10px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6em;
+  }
+
+  .project p {
+    font-size: 0.9em;
+  }
+
+  footer {
+    font-size: 0.85em;
+    padding: 8px;
+  }
+}
+
