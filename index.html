@@ -1,89 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Viola Ngige | Cybersecurity & Cloud Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Viola Ngige | Cloud Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg: #0a0e1a; --surface: #111827; --card: #161e2e; --accent: #38bdf8; --accent2: #818cf8; --text: #e2e8f0; --muted: #64748b; --border: #1e293b; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(56,189,248,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+    .blob { position: fixed; border-radius: 50%; filter: blur(120px); opacity: 0.12; pointer-events: none; z-index: 0; }
+    .blob-1 { width: 600px; height: 600px; background: #38bdf8; top: -200px; right: -100px; }
+    .blob-2 { width: 400px; height: 400px; background: #818cf8; bottom: 100px; left: -100px; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 60px; display: flex; justify-content: space-between; align-items: center; background: rgba(10,14,26,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--accent); }
+    .nav-links { display: flex; gap: 36px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    section { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 120px 40px; }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 140px; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.2); color: var(--accent); font-size: 0.78rem; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 32px; width: fit-content; animation: fadeUp 0.8s ease both; }
+    .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
+    .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 800; line-height: 1.05; letter-spacing: -2px; animation: fadeUp 0.8s 0.1s ease both; }
+    .hero h1 span { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { margin-top: 28px; font-size: 1.15rem; color: var(--muted); max-width: 560px; line-height: 1.8; animation: fadeUp 0.8s 0.2s ease both; }
+    .hero-sub strong { color: var(--text); font-weight: 400; }
+    .hero-certs { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 40px; animation: fadeUp 0.8s 0.3s ease both; }
+    .cert-badge { display: flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--border); padding: 10px 18px; border-radius: 10px; font-size: 0.82rem; transition: border-color 0.2s, transform 0.2s; }
+    .cert-badge:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .hero-buttons { display: flex; gap: 16px; margin-top: 48px; animation: fadeUp 0.8s 0.4s ease both; }
+    .btn { padding: 14px 32px; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; cursor: pointer; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-primary { background: var(--accent); color: #0a0e1a; border: none; }
+    .btn-primary:hover { background: #7dd3fc; transform: translateY(-2px); }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .section-label { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .section-title { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -1px; margin-bottom: 48px; line-height: 1.1; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .about-text p { color: var(--muted); margin-bottom: 20px; font-size: 1rem; }
+    .about-text p strong { color: var(--text); font-weight: 400; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; transition: border-color 0.2s, transform 0.2s; }
+    .stat-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .stat-number { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 0.82rem; color: var(--muted); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .skill-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: border-color 0.2s, transform 0.2s; position: relative; overflow: hidden; }
+    .skill-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); opacity: 0; transition: opacity 0.2s; }
+    .skill-card:hover { border-color: rgba(56,189,248,0.3); transform: translateY(-4px); }
+    .skill-card:hover::before { opacity: 1; }
+    .skill-icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .skill-name { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1rem; margin-bottom: 8px; }
+    .skill-desc { font-size: 0.85rem; color: var(--muted); }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .tag { background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.15); color: var(--accent); font-size: 0.72rem; padding: 3px 10px; border-radius: 100px; }
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: all 0.2s; }
+    .project-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; border-color: rgba(56,189,248,0.2); }
+    .project-card:hover { border-color: rgba(56,189,248,0.3); transform: translateY(-4px); }
+    .project-status { display: inline-flex; align-items: center; gap: 6px; font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; color: #4ade80; margin-bottom: 14px; }
+    .project-status::before { content: ''; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; }
+    .project-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+    .project-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 20px; }
+    .project-link { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-size: 0.82rem; text-decoration: none; transition: gap 0.2s; }
+    .project-link:hover { gap: 10px; }
+    .project-visual { background: rgba(56,189,248,0.04); border: 1px solid rgba(56,189,248,0.1); border-radius: 12px; padding: 28px; font-family: 'Courier New', monospace; font-size: 0.78rem; color: var(--muted); line-height: 2; }
+    .project-visual .kw { color: var(--accent2); }
+    .project-visual .val { color: var(--accent); }
+    .project-visual .str { color: #4ade80; }
+    .journey-list { display: flex; flex-direction: column; }
+    .journey-item { display: grid; grid-template-columns: 140px 1fr; gap: 32px; padding: 32px 0; border-bottom: 1px solid var(--border); }
+    .journey-item:last-child { border-bottom: none; }
+    .journey-date { font-size: 0.8rem; color: var(--muted); font-style: italic; padding-top: 4px; }
+    .journey-content h3 { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1rem; margin-bottom: 6px; }
+    .journey-content p { font-size: 0.88rem; color: var(--muted); }
+    .contact-box { background: var(--card); border: 1px solid rgba(56,189,248,0.2); border-radius: 20px; padding: 60px; text-align: center; }
+    .contact-box h2 { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
+    .contact-box p { color: var(--muted); margin-bottom: 40px; }
+    .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    footer { position: relative; z-index: 1; text-align: center; padding: 40px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.82rem; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; } .nav-links { display: none; } section { padding: 80px 24px; }
+      .hero h1 { font-size: 2.8rem; } .about-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; } .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+      .journey-item { grid-template-columns: 1fr; gap: 8px; } .contact-box { padding: 40px 24px; }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <h1>Viola Ngige</h1>
-      <p>Cybersecurity & Cloud Enthusiast | Aspiring Analyst</p>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <nav>
+    <div class="nav-logo">VN.</div>
+    <div class="nav-links">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#journey">Journey</a><a href="#contact">Contact</a>
     </div>
+  </nav>
 
-    <!-- Simple responsive nav -->
-    <nav>
-      <div class="menu-toggle">☰</div>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  <section class="hero">
+    <div class="hero-tag">Available for Cloud opportunities</div>
+    <h1>Viola<br/><span>Ngige.</span></h1>
+    <p class="hero-sub"><strong>Aspiring DevOps Engineer</strong> — AWS Certified Cloud Practitioner, building toward Solutions Architect. Learning cloud one project at a time, turning theory into production-grade infrastructure.</p>
+    <div class="hero-certs">
+      <div class="cert-badge">☁️ AWS Cloud Practitioner</div>
+      <div class="cert-badge">🏗️ Solutions Architect — In Progress</div>
+      <div class="cert-badge">🚀 DevOps — The Goal</div>
+    </div>
+    <div class="hero-buttons">
+      <a href="#projects" class="btn btn-primary">View Projects →</a>
+      <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+    </div>
+  </section>
 
   <section id="about">
-    <h2>About Me</h2>
-    <p>Hi, I’m Viola, passionate about cybersecurity, cloud computing, and solving digital security challenges. I love building, learning, and exploring the tech that secures our online world.</p>
+    <p class="section-label fade-in">About Me</p>
+    <h2 class="section-title fade-in">Building my portfolio<br/>day by day.</h2>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>I'm <strong>Viola Ngige</strong>, a cloud enthusiast based in Nairobi, Kenya, on a mission to master every layer of cloud infrastructure — from networking to automation to full DevOps pipelines.</p>
+        <p>I hold the <strong>AWS Cloud Practitioner</strong> certification and am actively working toward the <strong>Solutions Architect Associate</strong>. Every project I build is a step closer to becoming the DevOps engineer I'm working to be.</p>
+        <p>I believe in <strong>learning by doing</strong> — deploying real infrastructure, breaking things, fixing them, and documenting every lesson along the way.</p>
+      </div>
+      <div class="about-stats fade-in">
+        <div class="stat-card"><div class="stat-number">1</div><div class="stat-label">AWS Certification</div></div>
+        <div class="stat-card"><div class="stat-number">3+</div><div class="stat-label">Cloud Projects Built</div></div>
+        <div class="stat-card"><div class="stat-number">2</div><div class="stat-label">AWS Regions Deployed</div></div>
+        <div class="stat-card"><div class="stat-number">∞</div><div class="stat-label">Curiosity</div></div>
+      </div>
+    </div>
   </section>
 
   <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>Python (Web Scraping, Automation)</li>
-      <li>AWS Cloud Fundamentals</li>
-      <li>Networking Basics</li>
-      <li>Linux (Kali, Ubuntu)</li>
-      <li>Cybersecurity Tools (theHarvester, Nmap)</li>
-    </ul>
+    <p class="section-label fade-in">Technical Skills</p>
+    <h2 class="section-title fade-in">What I work with.</h2>
+    <div class="skills-grid">
+      <div class="skill-card fade-in"><div class="skill-icon">🌐</div><div class="skill-name">AWS Networking</div><div class="skill-desc">Designing secure, scalable cloud networks from scratch.</div><div class="skill-tags"><span class="tag">VPC</span><span class="tag">Subnets</span><span class="tag">Transit Gateway</span><span class="tag">Route Tables</span><span class="tag">Security Groups</span></div></div>
+      <div class="skill-card fade-in"><div class="skill-icon">⚙️</div><div class="skill-name">Compute & Storage</div><div class="skill-desc">Deploying and managing cloud compute and storage resources.</div><div class="skill-tags"><span class="tag">EC2</span><span class="tag">S3</span><span class="tag">IAM</span><span class="tag">CloudFront</span></div></div>
+      <div class="skill-card fade-in"><div class="skill-icon">🔒</div><div class="skill-name">Cloud Security</div><div class="skill-desc">Implementing least-privilege access and network isolation.</div><div class="skill-tags"><span class="tag">IAM Roles</span><span class="tag">Private Subnets</span><span class="tag">EICE</span><span class="tag">SSL/TLS</span></div></div>
+      <div class="skill-card fade-in"><div class="skill-icon">📖</div><div class="skill-name">Documentation</div><div class="skill-desc">Writing clear technical docs, READMEs, and architecture guides.</div><div class="skill-tags"><span class="tag">GitHub</span><span class="tag">Architecture Diagrams</span><span class="tag">Markdown</span></div></div>
+    </div>
   </section>
 
   <section id="projects">
-    <h2>Projects</h2>
-
-    <div class="project">
-      <h3>📝 Notes Manager (Python Project)</h3>
-      <p>A command-line notes management tool built in Python that allows users to create, edit, delete, and view notes — stored efficiently in a text or JSON file.</p>
-      <a href="https://github.com/Violangige02/note_manager" target="_blank" class="btn">View on GitHub</a>
+    <p class="section-label fade-in">Projects</p>
+    <h2 class="section-title fade-in">Things I've built.</h2>
+    <div class="projects-grid">
+      <div class="project-card featured fade-in">
+        <div>
+          <div class="project-status">Completed</div>
+          <h3 class="project-title">Multi-Region VPC Connectivity via Transit Gateway</h3>
+          <p class="project-desc">Connected 3 VPCs across Virginia and London using AWS Transit Gateway — no VPC Peering. Private EC2 instances communicate across regions with 0% packet loss.</p>
+          <div class="skill-tags" style="margin-bottom:24px"><span class="tag">Transit Gateway</span><span class="tag">VPC</span><span class="tag">EC2</span><span class="tag">Multi-Region</span><span class="tag">EICE</span></div>
+          <a href="https://github.com/Violangige02/aws-transit-gateway-multiregion" target="_blank" class="project-link">View on GitHub →</a>
+        </div>
+        <div class="project-visual">
+          <span class="kw">VPC1</span>-Virginia <span class="val">10.0.0.0/16</span><br/>
+          &nbsp;&nbsp;└─ <span class="str">EC2-1</span> [Public]<br/>
+          <span class="kw">VPC2</span>-Virginia <span class="val">10.1.0.0/16</span><br/>
+          &nbsp;&nbsp;└─ <span class="str">EC2-2</span> [Private]<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↕ TGW Peering<br/>
+          <span class="kw">VPC3</span>-London &nbsp;<span class="val">10.2.0.0/16</span><br/>
+          &nbsp;&nbsp;└─ <span class="str">EC2-3</span> [Private]<br/><br/>
+          ping <span class="val">10.2.1.x</span> -c 5<br/>
+          <span class="str">0% packet loss ✓</span>
+        </div>
+      </div>
+      <div class="project-card fade-in">
+        <div class="project-status" style="color:#38bdf8">In Progress</div>
+        <h3 class="project-title">Static Website with CDN</h3>
+        <p class="project-desc">Portfolio site hosted on S3, delivered globally via CloudFront with HTTPS. You're looking at it right now.</p>
+        <div class="skill-tags" style="margin-bottom:24px"><span class="tag">S3</span><span class="tag">CloudFront</span><span class="tag">ACM</span></div>
+        <a href="https://github.com/Violangige02" target="_blank" class="project-link">View GitHub →</a>
+      </div>
+      <div class="project-card fade-in">
+        <div class="project-status" style="color:var(--muted)">Coming Soon</div>
+        <h3 class="project-title">Serverless Function API</h3>
+        <p class="project-desc">A scalable API with multiple endpoints built on Lambda and API Gateway — no servers, pay-per-use.</p>
+        <div class="skill-tags" style="margin-bottom:24px"><span class="tag">Lambda</span><span class="tag">API Gateway</span><span class="tag">IAM</span></div>
+      </div>
     </div>
+  </section>
 
-    <div class="project">
-      <h3>⚙️ File Organizer Automation Script</h3>
-      <p>A Python automation tool that scans a folder and organizes files into categorized folders (like Images, Documents, Scripts, etc.) — making file management simple and fast.</p>
-      <p><strong>Tech Stack:</strong> Python (os, shutil)</p>
-      <a href="https://github.com/Violangige02/file_organizer" target="_blank" class="btn">View on GitHub</a>
-    </div>
-
-    <div class="project">
-      <h3>💻 E-Commerce Database System (MariaDB Project)</h3>
-      <p>A relational database project designed to simulate an e-commerce platform with tables for customers, products, orders, order items, and payments — including foreign keys, views, stored procedures, and triggers.</p>
-      <a href="https://github.com/Violangige02/E-COMMERCE-SYSTEM" target="_blank" class="btn">View on GitHub</a>
-    </div>
-
-    <div class="project">
-      <h3>☁️ Serverless Word Counter (AWS)</h3>
-      <p>A fully automated, event-driven solution that processes text files uploaded to **Amazon S3**, calculates the word count using a **Python AWS Lambda function**, and sends a report via **Amazon SNS email notification**.</p>
-      <p>Demonstrates expertise in **Serverless Architecture**, **Boto3 SDK**, and **Event-Driven Design**.</p>
-      <a href="https://github.com/Violangige02/AWS-S3-Word-Counter-Serverless" target="_blank" class="btn">View on GitHub</a>
+  <section id="journey">
+    <p class="section-label fade-in">My Journey</p>
+    <h2 class="section-title fade-in">The road so far.</h2>
+    <div class="journey-list">
+      <div class="journey-item fade-in"><div class="journey-date">2024</div><div class="journey-content"><h3>Started Cloud Journey</h3><p>Discovered AWS and began learning cloud fundamentals from scratch — no background in networking, just curiosity and determination.</p></div></div>
+      <div class="journey-item fade-in"><div class="journey-date">2025</div><div class="journey-content"><h3>AWS Cloud Practitioner ☁️</h3><p>Earned the AWS Cloud Practitioner certification — my first official validation of cloud knowledge.</p></div></div>
+      <div class="journey-item fade-in"><div class="journey-date">2026</div><div class="journey-content"><h3>Building Real Infrastructure</h3><p>Started deploying real projects — multi-region networking, CDN delivery, serverless APIs. Every project documented on GitHub.</p></div></div>
+      <div class="journey-item fade-in"><div class="journey-date">Next</div><div class="journey-content"><h3>Solutions Architect + DevOps 🚀</h3><p>Working toward AWS Solutions Architect Associate, then diving deep into DevOps — Terraform, CI/CD, containers, and automation.</p></div></div>
     </div>
   </section>
 
   <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:violangige@gmail.com">violangige@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/viola-ngige-383064266/" target="_blank">linkedin.com/in/viola-ngige</a></p>
-    <p>GitHub: <a href="https://github.com/Violangige02" target="_blank">github.com/Violangige02</a></p>
+    <div class="contact-box fade-in">
+      <h2>Let's connect.</h2>
+      <p>I'm always open to learning, collaborating, and connecting with people in the cloud and tech space.</p>
+      <div class="contact-links">
+        <a href="https://github.com/Violangige02" target="_blank" class="btn btn-primary">GitHub →</a>
+        <a href="https://linkedin.com/in/viola-ngige" target="_blank" class="btn btn-secondary">LinkedIn →</a>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <p>© 2025 Viola Ngige | Built with ❤️ and ambition</p>
-  </footer>
+  <footer><p>Built by Viola Ngige — Hosted on AWS S3 + CloudFront &nbsp;|&nbsp; © 2026</p></footer>
 
-  <script src="script.js"></script>
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
-
-
